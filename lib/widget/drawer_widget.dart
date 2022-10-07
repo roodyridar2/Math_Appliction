@@ -92,7 +92,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 }
 
 _launchURLApp() async {
-  var url = Uri.parse("https://github.com/roodyridar2/matrix-4by4");
+  var url = Uri.parse("https://github.com/roodyridar2/Hi_max");
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
