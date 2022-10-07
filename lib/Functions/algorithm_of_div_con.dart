@@ -27,17 +27,26 @@ class ConDivSolver {
       // print(result);
 
       x = double.parse(result);
-
-      if (x > 5000) {
-        result = "Diverges to infinity";
-        return result;
+      if (n >= 5000) {
+        if (x.floor() > firstConvergeNum.floor()) {
+          result = "Diverges to infinity";
+          return result;
+        }
+        if (x.floor() < firstConvergeNum.floor()) {
+          result = "Diverges to minus infinity";
+          return result;
+        }
       }
-      // print("what");
 
-      if (x < -5000) {
-        result = "Diverges to minus infinity";
-        return result;
-      }
+      // if (x > 1000) {
+      //   result = "Diverges to infinity";
+      //   return result;
+      // }
+
+      // if (x < -1000) {
+      //   result = "Diverges to minus infinity";
+      //   return result;
+      // }
 
       if (flag) {
         firstConvergeNum = x;
@@ -62,6 +71,7 @@ class ConDivSolver {
         }
       }
     }
+    print(x);
     return result;
   }
 }

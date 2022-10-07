@@ -10,7 +10,6 @@ class FactData {
     'Among all shapes with the same area circle has the shortest perimet',
     'From 0 to 1,000, the letter "A" only appears in 1,000 ("one thousand")',
     'Have you ever noticed that the opposite sides a die always add up to seven (7)',
-    '-40 °C is equal to -40 °F',
     'Did you Know, Trigonometry goes back to the Greek period',
     'Rulers are believed to have been used by the Indus Valley Civilization before 1500 BCE',
     'The ancient Greeks developed a numeral system c.450 BCE',

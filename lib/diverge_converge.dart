@@ -123,7 +123,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                           ),
                           child: const Center(
                             child: Text(
-                              "Get Rich!",
+                              "Math Fact!",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 35),
                             ),
