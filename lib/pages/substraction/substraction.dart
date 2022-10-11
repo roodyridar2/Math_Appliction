@@ -40,7 +40,7 @@ class _MyWidgetState extends State<Substraction> {
           ),
           body: TabBarView(
             children: [
-              MatrixA(),
+              const MatrixA(),
               MatrixB("Substraction", ksubstraction),
             ],
           ),

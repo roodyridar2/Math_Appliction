@@ -10,4 +10,4 @@ String kadition = "addition";
 String ksubstraction = "subtraction";
 String kmultiply = "multiply";
 String kdivision = "division";
-Color kcolorFunction = Color.fromARGB(255, 33, 17, 54);
+Color kcolorFunction = const Color.fromARGB(255, 33, 17, 54);

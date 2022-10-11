@@ -1,9 +1,9 @@
 import 'package:flutter_color/flutter_color.dart';
-import 'data_of_fact.dart';
-import './widget/number_button.dart';
+import '../Functions/data_of_fact.dart';
+import '../widget/number_button.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import 'Functions/algorithm_of_div_con.dart';
+import '../Functions/algorithm_of_div_con.dart';
 
 class ConvegeAndDiverge extends StatefulWidget {
   const ConvegeAndDiverge({super.key});
@@ -20,7 +20,7 @@ String result = "";
 class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
   double widthSize = 20;
   double heightSize = 15;
-  double size_font = 40;
+  double sizeFont = 40;
 
   Color labelColor() {
     if (result.contains("!") && result.contains(",")) {
@@ -66,7 +66,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                 child: Center(
                   child: Text(
                     label,
-                    style: TextStyle(color: ktextColor, fontSize: size_font),
+                    style: TextStyle(color: ktextColor, fontSize: sizeFont),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -109,7 +109,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                           setState(() {
                             getRich = true;
                             getrich2 = true;
-                            size_font = 30;
+                            sizeFont = 30;
                             label = factData.data();
                             result = "Did You Know!";
                           });
@@ -136,7 +136,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      numButton("n", () {
+                      NumButton("n", () {
                         setState(() {
                           label += "n";
                         });
@@ -144,7 +144,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                       SizedBox(
                         width: widthSize,
                       ),
-                      numButton("(", () {
+                      NumButton("(", () {
                         setState(() {
                           label += "(";
                         });
@@ -152,7 +152,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                       SizedBox(
                         width: widthSize,
                       ),
-                      numButton(")", () {
+                      NumButton(")", () {
                         setState(() {
                           label += ")";
                         });
@@ -160,7 +160,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                       SizedBox(
                         width: widthSize,
                       ),
-                      numButton("Del", () {
+                      NumButton("Del", () {
                         setState(() {
                           if (label.isNotEmpty) {
                             label = label.substring(0, label.length - 1);
@@ -171,14 +171,14 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                       SizedBox(
                         width: widthSize,
                       ),
-                      numButton("Clear", () {
+                      NumButton("Clear", () {
                         setState(() {
                           if (label.isNotEmpty) {
                             label = "";
                             result = "";
                           }
                         });
-                      }, HexColor("85586F")),
+                      }, const Color.fromARGB(255, 253, 90, 90)),
                     ],
                   ),
                   SizedBox(height: heightSize),
@@ -186,34 +186,34 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // RoundButton(FontAwesomeIcons.plus, et),
-                      numButton("1", () {
+                      NumButton("1", () {
                         setState(() {
                           label += "1";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
-                      numButton("2", () {
+                      NumButton("2", () {
                         setState(() {
                           label += "2";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton("3", () {
+                      NumButton("3", () {
                         setState(() {
                           label += "3";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton("+", () {
+                      NumButton("+", () {
                         setState(() {
                           label += "+";
                         });
                       }, kcolorFunction),
                       SizedBox(width: widthSize),
 
-                      numButton("-", () {
+                      NumButton("-", () {
                         setState(() {
                           label += "-";
                         });
@@ -225,34 +225,34 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // RoundButton(FontAwesomeIcons.plus, et),
-                      numButton("4", () {
+                      NumButton("4", () {
                         setState(() {
                           label += "4";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
-                      numButton("5", () {
+                      NumButton("5", () {
                         setState(() {
                           label += "5";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton("6", () {
+                      NumButton("6", () {
                         setState(() {
                           label += "6";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton("*", () {
+                      NumButton("*", () {
                         setState(() {
                           label += "*";
                         });
                       }, kcolorFunction),
                       SizedBox(width: widthSize),
 
-                      numButton("/", () {
+                      NumButton("/", () {
                         setState(() {
                           label += "/";
                         });
@@ -264,34 +264,34 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // RoundButton(FontAwesomeIcons.plus, et),
-                      numButton("7", () {
+                      NumButton("7", () {
                         setState(() {
                           label += "7";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
-                      numButton("8", () {
+                      NumButton("8", () {
                         setState(() {
                           label += "8";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton("9", () {
+                      NumButton("9", () {
                         setState(() {
                           label += "9";
                         });
                       }, knavbarColor),
                       SizedBox(width: widthSize),
 
-                      numButton(".", () {
+                      NumButton(".", () {
                         setState(() {
                           label += ".";
                         });
                       }, kcolorFunction),
                       SizedBox(width: widthSize),
 
-                      numButton("%", () {
+                      NumButton("%", () {
                         setState(() {
                           label += "%";
                         });
@@ -303,7 +303,7 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(width: 137),
-                      numButton("0", () {
+                      NumButton("0", () {
                         setState(() {
                           label += "0";
                         });
@@ -312,7 +312,6 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                       GestureDetector(
                         onTap: () {
                           ConDivSolver conDivSolver = ConDivSolver(label);
-                          print(getrich2);
                           setState(() {
                             if (!getrich2 && label.isNotEmpty) {
                               result = conDivSolver.reslut();

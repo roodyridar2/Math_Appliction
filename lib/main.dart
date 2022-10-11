@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
 import 'package:matrix/constants.dart';
-import 'package:matrix/diverge_converge.dart';
+import 'package:matrix/pages/diverge_converge.dart';
 import 'package:matrix/pages/division/division.dart';
 import 'package:matrix/pages/multiply/multiply.dart';
 import 'package:matrix/pages/substraction/substraction.dart';

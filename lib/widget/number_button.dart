@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_color/flutter_color.dart';
-import 'package:matrix/constants.dart';
-import 'package:matrix/diverge_converge.dart';
+import 'package:matrix/pages/diverge_converge.dart';
 
-class numButton extends StatelessWidget {
-  const numButton(this.numberName, this.onpress, this.color, {super.key});
+class NumButton extends StatelessWidget {
+  const NumButton(this.numberName, this.onpress, this.color, {super.key});
   final String numberName;
   final Function onpress;
   final Color color;
@@ -29,7 +27,7 @@ class numButton extends StatelessWidget {
           child: Center(
             child: Text(
               numberName,
-              style: TextStyle(color: Colors.white, fontSize: 35),
+              style: const TextStyle(color: Colors.white, fontSize: 35),
             ),
           ),
         ));

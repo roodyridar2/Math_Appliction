@@ -15,12 +15,15 @@ class ConDivSolver {
       // print("---------");
       // print(data);
       // print("---------");
-      var result;
+      String result;
       try {
         Expression exp = p.parse(data);
         // print(exp);
         ContextModel cm = ContextModel();
         result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+        if (result.toString() == "Infinity") {
+          return "Infinity";
+        }
       } catch (e) {
         return "This is Wrong\n Look a up, LOOK!";
       }
@@ -71,7 +74,7 @@ class ConDivSolver {
         }
       }
     }
-    print(x);
+
     return result;
   }
 }

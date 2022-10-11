@@ -1,9 +1,7 @@
 import 'dart:math';
 
-import 'package:matrix/diverge_converge.dart';
-
 class FactData {
-  List<String> listOf_FAct = [
+  List<String> listOffact = [
     'Zero ( 0 ) is the only number which can not be represented by Roman numerals',
     'Plus (+) and Minus (-) sign symbols were used as early as 1489 A.D',
     'Among all shapes with the same perimeter a circle has the largest area',
@@ -22,6 +20,6 @@ class FactData {
   ];
   String data() {
     Random random = Random();
-    return listOf_FAct[random.nextInt(listOf_FAct.length)];
+    return listOffact[random.nextInt(listOffact.length)];
   }
 }
