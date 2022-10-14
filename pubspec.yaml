@@ -41,6 +41,11 @@ dependencies:
   matrix2d: ^1.0.2
   url_launcher: ^6.1.5
   math_expressions: ^2.3.1
+  syncfusion_flutter_charts: ^20.3.49
+  syncfusion_flutter_core: ^20.3.49
+  syncfusion_localizations: ^20.3.49
+  localization: ^2.1.0
+  statistics: ^1.0.23
 
 dev_dependencies:
   flutter_test:

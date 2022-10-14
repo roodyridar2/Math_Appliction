@@ -64,11 +64,9 @@ class _ConvegeAndDivergeState extends State<ConvegeAndDiverge> {
                   color: knavbarColor,
                 ),
                 child: Center(
-                  child: Text(
-                    label,
-                    style: TextStyle(color: ktextColor, fontSize: sizeFont),
-                    textAlign: TextAlign.center,
-                  ),
+                  child: Text(label,
+                      style: TextStyle(color: ktextColor, fontSize: sizeFont),
+                      textAlign: TextAlign.center),
                 ),
               ),
             ),

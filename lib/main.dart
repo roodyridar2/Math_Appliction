@@ -3,6 +3,7 @@ import 'package:matrix/constants.dart';
 import 'package:matrix/pages/diverge_converge.dart';
 import 'package:matrix/pages/division/division.dart';
 import 'package:matrix/pages/multiply/multiply.dart';
+import 'package:matrix/pages/static.dart';
 import 'package:matrix/pages/substraction/substraction.dart';
 import 'pages/addition/addition.dart';
 import 'widget/page_widget.dart';
@@ -45,8 +46,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // return ConvegeAndDiverge();
-
+    return StaticAndProbability();
+/*
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hi-Max"),
@@ -111,10 +112,21 @@ class _HomePageState extends State<HomePage> {
               },
               child: const PageWidget("Converge & Diverge "),
             ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const StaticAndProbability()),
+                );
+              },
+              child: const PageWidget("Static "),
+            ),
           ],
         ),
       ),
       drawer: const DrawerWidget(),
-    );
+    ); */
   }
 }
