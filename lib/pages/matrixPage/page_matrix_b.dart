@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widget/gridview.dart';
-import '../widget/button_card.dart';
-import '../widget/text_field_card.dart';
+import '../../widget/gridview.dart';
+import '../../widget/button_card.dart';
+import '../../widget/text_field_card.dart';
 import 'package:matrix2d/matrix2d.dart';
-import '../Functions/algorithm.dart';
+import '../../Functions/algorithm.dart';
 
 // import './pageMatrixA.dart';
 

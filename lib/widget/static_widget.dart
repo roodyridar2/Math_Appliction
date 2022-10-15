@@ -29,9 +29,9 @@ class ResultStatic extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 5),
+        const SizedBox(width: 15),
         SizedBox(
-          width: 50,
+          width: 75,
           height: 40,
           child: Align(
             alignment: Alignment.centerLeft,

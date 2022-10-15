@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matrix/pages/diverge_converge.dart';
+import 'package:matrix/pages/calculas/diverge_converge.dart';
 
 class NumButton extends StatelessWidget {
   const NumButton(this.numberName, this.onpress, this.color, {super.key});

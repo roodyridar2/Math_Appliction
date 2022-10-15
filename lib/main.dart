@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import 'package:matrix/pages/diverge_converge.dart';
-import 'package:matrix/pages/division/division.dart';
-import 'package:matrix/pages/multiply/multiply.dart';
-import 'package:matrix/pages/static.dart';
-import 'package:matrix/pages/substraction/substraction.dart';
-import 'pages/addition/addition.dart';
+import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
+import 'package:matrix/pages/calculas/diverge_converge.dart';
+import 'package:matrix/pages/matrixPage/division.dart';
+import 'package:matrix/pages/matrixPage/multiply.dart';
+import 'package:matrix/pages/probabilityAndStatic/static.dart';
+import 'package:matrix/pages/matrixPage/substraction.dart';
+import 'pages/matrixPage/addition.dart';
 import 'widget/page_widget.dart';
 import 'widget/drawer_widget.dart';
 
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return StaticAndProbability();
+    // return ChartPage();
 /*
     return Scaffold(
       appBar: AppBar(

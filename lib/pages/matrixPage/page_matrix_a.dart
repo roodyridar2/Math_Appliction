@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
 import 'package:matrix/main.dart';
-import '../widget/gridview.dart';
-import '../widget/button_card.dart';
-import '../widget/text_field_card.dart';
+import '../../widget/gridview.dart';
+import '../../widget/button_card.dart';
+import '../../widget/text_field_card.dart';
 
 class MatrixA extends StatefulWidget {
   const MatrixA({super.key});

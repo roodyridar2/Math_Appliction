@@ -1,9 +1,9 @@
 import 'package:flutter_color/flutter_color.dart';
-import '../Functions/data_of_fact.dart';
-import '../widget/number_button.dart';
+import '../../Functions/data_of_fact.dart';
+import '../../widget/number_button.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import '../Functions/algorithm_of_div_con.dart';
+import '../../Functions/algorithm_of_div_con.dart';
 
 class ConvegeAndDiverge extends StatefulWidget {
   const ConvegeAndDiverge({super.key});

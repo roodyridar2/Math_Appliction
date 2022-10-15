@@ -1,11 +1,11 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../widget/number_button.dart';
+import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
+import '../../widget/number_button.dart';
 import 'package:matrix/constants.dart';
 import 'package:flutter_color/flutter_color.dart';
-import '../widget/staticWidget.dart';
+import '../../widget/static_widget.dart';
 import 'package:statistics/statistics.dart';
 
 class StaticAndProbability extends StatefulWidget {
@@ -18,12 +18,22 @@ class StaticAndProbability extends StatefulWidget {
 String label = "";
 String result = "";
 
-List<int> array(String label) {
+List<double> array(String label) {
+  if (label.replaceAll(",", "").isEmpty ||
+      label.replaceAll(".", "").isEmpty ||
+      label.isEmpty) {
+    return [0];
+  }
+
+  if (label[label.length - 1] == ",") {
+    label = label.substring(0, label.length - 1);
+  }
+
   var ar = label.split(',');
 
-  List<int> arrayLable = [ar.length];
+  List<double> arrayLable = [ar.length.toDouble()];
   for (int i = 0; i < ar.length; i++) {
-    arrayLable.add(ar[i].toInt());
+    arrayLable.add(ar[i].toDouble());
   }
   arrayLable.removeAt(0);
   return arrayLable;
@@ -47,9 +57,9 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
 
     max = (statistics.max).toString();
     min = (statistics.min).toString();
-    range = (statistics.max - statistics.min).toString();
+    range = (statistics.max - statistics.min).toStringAsFixed(2);
     median = (arrayLable.median).toString();
-    standardDev = (std(arrayLable)).toString();
+    standardDev = (std(array(label))).toString();
     mean = (statistics.mean).toStringAsFixed(1);
   }
 
@@ -100,11 +110,10 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(width: 55),
                       ResultStatic("Min", min),
                       const SizedBox(width: 10),
                       ResultStatic("max", max),
-                      const SizedBox(width: 10),
-                      ResultStatic("STD", standardDev),
                       const SizedBox(width: 10),
                       ResultStatic("Range", range),
                     ],
@@ -113,11 +122,13 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(width: 5),
+                      const SizedBox(width: 55),
 
                       ResultStatic("Mean", mean),
-                      const SizedBox(width: 15),
+                      const SizedBox(width: 10),
                       ResultStatic("Median", median),
+                      const SizedBox(width: 10),
+                      ResultStatic("STD", standardDev),
 
                       // SizedBox(
                       //   width: 15
@@ -164,17 +175,26 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      Container(
-                        width: 100,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: knavbarColor,
-                        ),
-                        child: const Icon(
-                          FontAwesomeIcons.chartColumn,
-                          color: Colors.white,
-                          size: 40,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ChartPage()),
+                          );
+                        },
+                        child: Container(
+                          width: 100,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: knavbarColor,
+                          ),
+                          child: const Icon(
+                            FontAwesomeIcons.chartColumn,
+                            color: Colors.white,
+                            size: 40,
+                          ),
                         ),
                       )
                     ],
@@ -320,7 +340,7 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
   }
 }
 
-String std(List<int> data) {
+String std(List<double> data) {
   double total = 0;
   for (int i = 0; i < data.length; i++) {
     total += data[i];

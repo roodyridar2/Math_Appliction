@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import '../page_matrixA.dart';
-import '../page_matrix_b.dart';
+import 'page_matrix_a.dart';
+import 'page_matrix_b.dart';
 
-class Substraction extends StatefulWidget {
-  const Substraction({super.key});
+class Adition extends StatefulWidget {
+  const Adition({super.key});
 
   @override
-  State<Substraction> createState() => _MyWidgetState();
+  State<Adition> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Substraction> {
+class _MyWidgetState extends State<Adition> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +41,7 @@ class _MyWidgetState extends State<Substraction> {
           body: TabBarView(
             children: [
               const MatrixA(),
-              MatrixB("Substraction", ksubstraction),
+              MatrixB("Addition", kadition),
             ],
           ),
         ),

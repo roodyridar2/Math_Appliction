@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../pages/Result/result.dart';
+import '../pages/matrixPage/result.dart';
 import '../constants.dart';
-import '../pages/page_matrixA.dart';
-import '../pages/page_matrix_b.dart';
+import '../pages/matrixPage/page_matrix_a.dart';
+import '../pages/matrixPage/page_matrix_b.dart';
 import 'list.dart';
 
 class SolverPushButton extends StatelessWidget {

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import '../page_matrixA.dart';
-import '../page_matrix_b.dart';
+import 'page_matrix_a.dart';
+import 'page_matrix_b.dart';
 
-class Division extends StatefulWidget {
-  const Division({super.key});
+class Multiply extends StatefulWidget {
+  const Multiply({super.key});
 
   @override
-  State<Division> createState() => _MyWidgetState();
+  State<Multiply> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Division> {
+class _MyWidgetState extends State<Multiply> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +41,7 @@ class _MyWidgetState extends State<Division> {
           body: TabBarView(
             children: [
               const MatrixA(),
-              MatrixB("Division", kdivision),
+              MatrixB("Multiply", kmultiply),
             ],
           ),
         ),
