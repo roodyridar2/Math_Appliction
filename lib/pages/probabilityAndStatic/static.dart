@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
+import 'package:matrix/pages/probabilityAndStatic/more_static.dart';
 import '../../widget/number_button.dart';
 import 'package:matrix/constants.dart';
 import 'package:flutter_color/flutter_color.dart';
@@ -57,9 +58,9 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
 
     max = (statistics.max).toString();
     min = (statistics.min).toString();
-    range = (statistics.max - statistics.min).toStringAsFixed(2);
+    range = (statistics.max - statistics.min).toStringAsFixed(1);
     median = (arrayLable.median).toString();
-    standardDev = (std(array(label))).toString();
+    standardDev = std(array(label)).substring(0, std(array(label)).length - 1);
     mean = (statistics.mean).toStringAsFixed(1);
   }
 
@@ -122,17 +123,41 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(width: 55),
+                      // const SizedBox(width: 55),
 
-                      ResultStatic("Mean", mean),
-                      const SizedBox(width: 10),
-                      ResultStatic("Median", median),
-                      const SizedBox(width: 10),
-                      ResultStatic("STD", standardDev),
+                      // ResultStatic("Mean", mean),
+                      // const SizedBox(width: 10),
+                      // ResultStatic("Median", median),
+                      // const SizedBox(width: 10),
+                      // ResultStatic("STD", standardDev),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  MoresStatic(max, min, range),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 80,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: knavbarColor,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "More",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
 
-                      // SizedBox(
-                      //   width: 15
-                      // ),
+                      const SizedBox(width: 35),
                       // ResultStatic(),
                       // SizedBox(
                       //   width: 15

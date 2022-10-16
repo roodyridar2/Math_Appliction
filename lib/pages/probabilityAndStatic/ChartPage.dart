@@ -29,16 +29,16 @@ class _ChartPage extends State<ChartPage> {
     Colors.deepPurple,
     Colors.blueAccent,
     Colors.amber,
-    Colors.deepPurpleAccent,
     Colors.brown,
-    Colors.lightBlue,
+    Colors.redAccent,
     Colors.black87,
     Colors.teal,
+    Colors.deepPurpleAccent,
     Colors.indigo,
+    Colors.pink,
     Colors.cyanAccent,
     Colors.blueGrey,
-    Colors.pink,
-    Colors.redAccent,
+    Colors.lightBlue,
   ];
 
   @override
