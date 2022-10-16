@@ -123,12 +123,12 @@ class MoresStatic extends StatelessWidget {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: Expanded(
-                flex: 0,
+            Expanded(
+              flex: 0,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
                 child: Container(
                   width: double.infinity,
                   height: 75,

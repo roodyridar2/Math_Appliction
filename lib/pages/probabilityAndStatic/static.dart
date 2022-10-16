@@ -71,13 +71,16 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
 
     int q1 = (((arrayLable.length + 1) / 4).floor()) - 1;
     int q3 = ((3 * (arrayLable.length + 1) / 4).floor()) - 1;
+    double iqrs = (arrayLable[q3] - arrayLable[q1]);
+    double outlierMin = arrayLable[q1] - (1.5 * iqrs);
+    double outlierMax = arrayLable[q3] + (1.5 * iqrs);
 
     var outlierArray = [];
     for (int i = 0; i < arrayLable.length; i++) {
-      if (arrayLable[i] < arrayLable[q1]) {
+      if (arrayLable[i] > outlierMax) {
         outlierArray.add(arrayLable[i]);
       }
-      if (arrayLable[i] > arrayLable[q3]) {
+      if (arrayLable[i] < outlierMin) {
         outlierArray.add(arrayLable[i]);
       }
     }
@@ -85,7 +88,7 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
     outlier = outlierArray.toString();
     q1S = arrayLable[q1].toString();
     q3S = arrayLable[q3].toString();
-    iqr = (arrayLable[q3] - arrayLable[q1]).toString();
+    iqr = iqrs.toString();
   }
 
   @override
@@ -97,7 +100,7 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Expanded(
               flex: 1,
               child: Container(
