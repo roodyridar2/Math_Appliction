@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return StaticAndProbability();
+    // return StaticAndProbability();
     // return ChartPage();
-/*
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hi-Max"),
@@ -130,6 +130,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: const DrawerWidget(),
-    ); */
+    );
   }
 }

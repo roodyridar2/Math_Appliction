@@ -46,11 +46,15 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
   String max = "";
   String min = "";
   String range = "";
-  String mod = "";
   String median = "";
   String sum = "";
   String standardDev = "";
   String mean = "";
+  String q1S = "";
+  String q3S = "";
+  String iqr = "";
+  String outlier = "";
+  // String mod = "";
 
   void algorithOFstatic() {
     var arrayLable = array(label);
@@ -62,6 +66,26 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
     median = (arrayLable.median).toString();
     standardDev = std(array(label)).substring(0, std(array(label)).length - 1);
     mean = (statistics.mean).toStringAsFixed(1);
+    sum = (statistics.sum).toString();
+    // List<double> testar = [160, 165, 170, 175, 185, 185, 195, 205, 250];
+
+    int q1 = (((arrayLable.length + 1) / 4).floor()) - 1;
+    int q3 = ((3 * (arrayLable.length + 1) / 4).floor()) - 1;
+
+    var outlierArray = [];
+    for (int i = 0; i < arrayLable.length; i++) {
+      if (arrayLable[i] < arrayLable[q1]) {
+        outlierArray.add(arrayLable[i]);
+      }
+      if (arrayLable[i] > arrayLable[q3]) {
+        outlierArray.add(arrayLable[i]);
+      }
+    }
+    outlierArray.sort();
+    outlier = outlierArray.toString();
+    q1S = arrayLable[q1].toString();
+    q3S = arrayLable[q3].toString();
+    iqr = (arrayLable[q3] - arrayLable[q1]).toString();
   }
 
   @override
@@ -73,17 +97,6 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Container(
-            //   width: double.infinity,
-            //   height: 50,
-            //   color: knavbarColor,
-            //   child: const Center(
-            //     child: Text(
-            //       "Simple Solver ",
-            //       style: TextStyle(color: Colors.white, fontSize: 20),
-            //     ),
-            //   ),
-            // ),
             const SizedBox(height: 20),
             Expanded(
               flex: 1,
@@ -115,8 +128,8 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                       ResultStatic("Min", min),
                       const SizedBox(width: 10),
                       ResultStatic("max", max),
-                      const SizedBox(width: 10),
-                      ResultStatic("Range", range),
+                      // const SizedBox(width: 10),
+                      // ResultStatic("Range", range),
                     ],
                   ),
                   const SizedBox(height: 15),
@@ -135,13 +148,24 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  MoresStatic(max, min, range),
+                              builder: (context) => MoresStatic(
+                                min,
+                                max,
+                                range,
+                                median,
+                                mean,
+                                sum,
+                                standardDev,
+                                q1S,
+                                q3S,
+                                iqr,
+                                outlier,
+                              ),
                             ),
                           );
                         },
                         child: Container(
-                          width: 80,
+                          width: 90,
                           height: 50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
@@ -150,19 +174,16 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                           child: const Center(
                             child: Text(
                               "More",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
                       ),
 
-                      const SizedBox(width: 35),
-                      // ResultStatic(),
-                      // SizedBox(
-                      //   width: 15
-                      // ),
-                      // ResultStatic(),
+                      const SizedBox(width: 72),
                     ],
                   ),
                 ],

@@ -74,7 +74,7 @@ class _ChartPage extends State<ChartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bar Chart"),
+        title: const Text("Visualize Number"),
         centerTitle: true,
         backgroundColor: kbackgroundColor,
       ),

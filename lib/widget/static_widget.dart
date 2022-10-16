@@ -16,7 +16,7 @@ class ResultStatic extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 80,
+          width: 90,
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -29,9 +29,9 @@ class ResultStatic extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 15),
+        const SizedBox(width: 10),
         SizedBox(
-          width: 75,
+          width: 120,
           height: 40,
           child: Align(
             alignment: Alignment.centerLeft,
