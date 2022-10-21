@@ -5,7 +5,7 @@ import 'package:matrix/pages/probabilityAndStatic/static.dart';
 import 'package:statistics/statistics.dart';
 
 // import 'bar_chart_model.dart'
-import './pages/probabilityAndStatic/bar_chart_model.dart';
+import '../probabilityAndStatic/bar_chart_model.dart';
 
 class ChartBouncingBall extends StatefulWidget {
   ChartBouncingBall(this.aNum, {Key? key}) : super(key: key);

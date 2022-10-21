@@ -8,7 +8,7 @@ import 'package:matrix/pages/matrixPage/multiply.dart';
 import 'package:matrix/pages/probabilityAndStatic/more_static.dart';
 import 'package:matrix/pages/probabilityAndStatic/static.dart';
 import 'package:matrix/pages/matrixPage/substraction.dart';
-import 'package:matrix/chartbouningball.dart';
+import 'package:matrix/pages/calculas/chartbouningball.dart';
 import 'pages/matrixPage/addition.dart';
 import 'widget/page_widget.dart';
 import 'widget/drawer_widget.dart';

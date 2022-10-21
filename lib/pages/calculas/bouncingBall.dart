@@ -2,15 +2,16 @@ import 'dart:math';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:matrix/chartbouningball.dart';
+import 'package:matrix/pages/calculas/chartbouningball.dart';
 import 'package:statistics/statistics.dart';
 import '../../widget/number_button.dart';
 import 'package:matrix/constants.dart';
 
-TextStyle kgoogleStyle(Color color) {
+TextStyle kgoogleStyle(Color color, {double? fontsize}) {
+  double font = fontsize.whenNull(24.0);
   var style = GoogleFonts.abel(
       // textStyle: Theme.of(context).textTheme.headline4,
-      fontSize: 25,
+      fontSize: font,
       fontWeight: FontWeight.w200,
       // fontStyle: FontStyle.normal,
       color: color);
@@ -68,7 +69,7 @@ class _BouncingBallState extends State<BouncingBall> {
                               //   fontSize: 20,
                               // ),
 
-                              style: kgoogleStyle(ktextColor),
+                              style: kgoogleStyle(Colors.white),
                             ),
                           ],
                         ),
@@ -82,7 +83,7 @@ class _BouncingBallState extends State<BouncingBall> {
                               style: kgoogleStyle(Colors.tealAccent),
                             ),
                             Text(
-                              " And ",
+                              "  And  ",
                               style: kgoogleStyle(ktextColor),
                             ),
                             Text(
@@ -100,7 +101,7 @@ class _BouncingBallState extends State<BouncingBall> {
                   ),
                 ),
               ),
-              SizedBox(height: heightSize),
+              SizedBox(height: heightSize + 30),
               Expanded(
                 flex: 1,
                 child: Column(
@@ -117,19 +118,18 @@ class _BouncingBallState extends State<BouncingBall> {
                           ),
                           child: Row(
                             children: [
-                              const Expanded(
-                                child: Text(
-                                  "    result:",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 24),
-                                ),
-                              ),
                               Expanded(
                                 child: Text(
-                                  result,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 24),
+                                  "  result:",
+                                  style: kgoogleStyle(ktextColor, fontsize: 30),
                                 ),
+                              ),
+                              const SizedBox(width: 38),
+                              Expanded(
+                                flex: 2,
+                                child: Text(result,
+                                    style:
+                                        kgoogleStyle(ktextColor, fontsize: 25)),
                               ),
                             ],
                           ),
