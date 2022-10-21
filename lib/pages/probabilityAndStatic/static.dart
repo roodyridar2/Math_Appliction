@@ -16,7 +16,7 @@ class StaticAndProbability extends StatefulWidget {
   State<StaticAndProbability> createState() => _StaticAndProbabilityState();
 }
 
-String label = "";
+String label = "160,165,170,175,185,185,185,195,205,250";
 String result = "";
 
 List<double> array(String label) {
@@ -378,7 +378,7 @@ class _StaticAndProbabilityState extends State<StaticAndProbability> {
                         });
                       }, knavbarColor),
                     ],
-                  )
+                  ),
                 ],
               ),
             )
