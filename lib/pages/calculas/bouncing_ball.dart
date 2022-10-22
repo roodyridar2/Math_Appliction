@@ -26,7 +26,7 @@ class BouncingBall extends StatefulWidget {
 }
 
 class _BouncingBallState extends State<BouncingBall> {
-  String label = "64";
+  String label = "";
   String result = "";
   double widthSize = 30;
   double heightSize = 24;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import 'package:matrix/pages/calculas/bouncingBall.dart';
+import 'package:matrix/pages/calculas/bouncing_ball.dart';
 import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
 import 'package:matrix/pages/calculas/diverge_converge.dart';
 import 'package:matrix/pages/matrixPage/division.dart';
@@ -53,9 +53,8 @@ class _HomePageState extends State<HomePage> {
     // return StaticAndProbability();
     // return ChartPage();
     // return ChartBouncingBall();
-    return BouncingBall();
+    // return BouncingBall();
 
-/*
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hi-Max"),
@@ -131,10 +130,20 @@ class _HomePageState extends State<HomePage> {
               },
               child: const PageWidget("Static "),
             ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BouncingBall()),
+                );
+              },
+              child: const PageWidget("Bouncing Ball"),
+            ),
           ],
         ),
       ),
       drawer: const DrawerWidget(),
-    ); */
+    );
   }
 }
