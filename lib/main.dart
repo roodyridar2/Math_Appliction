@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
 import 'package:matrix/pages/calculas/bouncing_ball.dart';
-import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
 import 'package:matrix/pages/calculas/diverge_converge.dart';
 import 'package:matrix/pages/matrixPage/division.dart';
 import 'package:matrix/pages/matrixPage/multiply.dart';
-import 'package:matrix/pages/probabilityAndStatic/more_static.dart';
 import 'package:matrix/pages/probabilityAndStatic/static.dart';
 import 'package:matrix/pages/matrixPage/substraction.dart';
-import 'package:matrix/pages/calculas/chartbouningball.dart';
 import 'pages/matrixPage/addition.dart';
 import 'widget/page_widget.dart';
 import 'widget/drawer_widget.dart';

@@ -1,23 +1,29 @@
+import 'dart:math';
+
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:matrix/constants.dart';
-import 'package:matrix/pages/probabilityAndStatic/static.dart';
 import 'package:statistics/statistics.dart';
 
 // import 'bar_chart_model.dart'
 import '../probabilityAndStatic/bar_chart_model.dart';
 
 class ChartBouncingBall extends StatefulWidget {
-  ChartBouncingBall(this.aNum, {Key? key}) : super(key: key);
-  double aNum;
+  const ChartBouncingBall(this.aNum, this.upR, this.downR, {Key? key})
+      : super(key: key);
+  final double aNum;
+  final double upR;
+  final double downR;
 
   @override
-  State<ChartBouncingBall> createState() => _TestPage(aNum);
+  State<ChartBouncingBall> createState() => _TestPage(aNum, upR, downR);
 }
 
 class _TestPage extends State<ChartBouncingBall> {
-  _TestPage(this.aNum);
+  _TestPage(this.aNum, this.upR, this.downR);
   double aNum;
+  double upR;
+  double downR;
   List<BarChartModel> data = [
     // BarChartModel(
     //   year: "2014",
@@ -46,27 +52,56 @@ class _TestPage extends State<ChartBouncingBall> {
     super.initState();
 
     List<double> bouncingballData = [];
-    double a = aNum;
-    bouncingballData.add(a);
-    while (true) {
-      a = a * (3 / 4);
-      bouncingballData.add(a.toStringAsFixed(2).toDouble());
-      if (a < 1) {
-        break;
-      }
-    }
 
-    for (int i = 0, j = 0; i < bouncingballData.length; i++, j++) {
-      if (j >= colordata.length) {
-        j = 0;
+    int count = 0;
+    double a = aNum;
+    String space = "";
+
+    if (upR != downR) {
+      bouncingballData.add(a);
+      while (true) {
+        a = a * (upR / downR);
+        bouncingballData.add(a.toStringAsFixed(2).toDouble());
+        if (a < 1) {
+          break;
+        }
       }
-      data.add(
-        BarChartModel(
-          year: bouncingballData[i].toString(),
-          financial: (bouncingballData[i]),
-          color: charts.ColorUtil.fromDartColor(colordata[j]),
-        ),
-      );
+      for (int i = 0, j = 0; i < bouncingballData.length; i++, j++) {
+        if (j >= colordata.length) {
+          j = 0;
+        }
+        data.add(
+          BarChartModel(
+            year: bouncingballData[i].toString(),
+            financial: (bouncingballData[i]),
+            color: charts.ColorUtil.fromDartColor(colordata[j]),
+          ),
+        );
+      }
+    } else {
+      for (int i = 0; i < 25; i++) {
+        count++;
+        a *= (upR / downR);
+        bouncingballData.add(a.toStringAsFixed(2).toDouble());
+        if (count >= 25) {
+          break;
+        }
+      }
+
+      for (int i = 0, j = 0; i < bouncingballData.length; i++, j++) {
+        if (j >= colordata.length) {
+          j = 0;
+        }
+        space += " ";
+
+        data.add(
+          BarChartModel(
+            year: space,
+            financial: (bouncingballData[i]),
+            color: charts.ColorUtil.fromDartColor(colordata[j]),
+          ),
+        );
+      }
     }
   }
 

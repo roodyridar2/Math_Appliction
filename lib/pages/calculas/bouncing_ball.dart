@@ -26,13 +26,17 @@ class BouncingBall extends StatefulWidget {
 }
 
 class _BouncingBallState extends State<BouncingBall> {
+  double fixwidth = 150;
   String label = "";
   String result = "";
   double widthSize = 30;
   double heightSize = 24;
+  double upR = 2;
+  double downR = 3;
   double solver() {
-    result =
-        (double.parse(label) * ((1 + 2 / 3) / (1 - 2 / 3))).toStringAsFixed(1);
+    result = (double.parse(label) *
+            ((1 + (upR.abs() / downR.abs())) / (1 - (upR.abs() / downR.abs()))))
+        .toStringAsFixed(1);
 
     return 0.0;
   }
@@ -75,11 +79,11 @@ class _BouncingBallState extends State<BouncingBall> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 24, bottom: 20),
+                        padding: const EdgeInsets.only(left: 24, bottom: 5),
                         child: Row(
                           children: [
                             Text(
-                              "R = 2/3",
+                              "R = $upR/$downR",
                               style: kgoogleStyle(Colors.tealAccent),
                             ),
                             Text(
@@ -90,18 +94,124 @@ class _BouncingBallState extends State<BouncingBall> {
                               "A = ",
                               style: kgoogleStyle(Colors.yellow),
                             ),
-                            Text(
-                              label,
-                              style: kgoogleStyle(Colors.yellow),
+                            Expanded(
+                              flex: 10,
+                              child: Text(
+                                label,
+                                style: kgoogleStyle(Colors.yellow),
+                              ),
                             ),
+                            SizedBox(width: fixwidth),
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 24, bottom: 20),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  upR++;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: Colors.tealAccent,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              " Up-R ",
+                              style:
+                                  kgoogleStyle(Colors.tealAccent, fontsize: 25),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  upR--;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: Colors.tealAccent,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 5),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  downR++;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: Colors.tealAccent,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              " Down-R ",
+                              style:
+                                  kgoogleStyle(Colors.tealAccent, fontsize: 25),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  downR--;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: Colors.tealAccent,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: heightSize + 30),
+              SizedBox(height: heightSize),
               Expanded(
                 flex: 1,
                 child: Column(
@@ -120,7 +230,7 @@ class _BouncingBallState extends State<BouncingBall> {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "  result:",
+                                  "  SUM:",
                                   style: kgoogleStyle(ktextColor, fontsize: 30),
                                 ),
                               ),
@@ -135,16 +245,30 @@ class _BouncingBallState extends State<BouncingBall> {
                           ),
                         ),
                         SizedBox(width: widthSize),
+                        //chart button
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ChartBouncingBall(double.parse(label))),
-                              );
-                            });
+                            if (upR.abs() == 0 && downR == 0) {
+                              setState(() {
+                                result = "unsolvable";
+                              });
+                            }
+                            if (downR == 0) {
+                              result = "unsolvable";
+                            } else {
+                              setState(() {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChartBouncingBall(
+                                      double.parse(label),
+                                      upR.abs(),
+                                      downR.abs(),
+                                    ),
+                                  ),
+                                );
+                              });
+                            }
                           },
                           child: Container(
                             width: 100,

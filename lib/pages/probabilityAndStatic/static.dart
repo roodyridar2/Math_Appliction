@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:matrix/pages/probabilityAndStatic/ChartPage.dart';
+import 'package:matrix/pages/probabilityAndStatic/chart_page.dart';
 import 'package:matrix/pages/probabilityAndStatic/more_static.dart';
 import '../../widget/number_button.dart';
 import 'package:matrix/constants.dart';
