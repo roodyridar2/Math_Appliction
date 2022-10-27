@@ -34,8 +34,7 @@ class _BouncingBallState extends State<BouncingBall> {
   double upR = 2;
   double downR = 3;
   double solver() {
-    result = (double.parse(label) *
-            ((1 + (upR.abs() / downR.abs())) / (1 - (upR.abs() / downR.abs()))))
+    result = (double.parse(label) * ((1 + (upR / downR)) / (1 - (upR / downR))))
         .toStringAsFixed(1);
 
     return 0.0;
@@ -115,20 +114,8 @@ class _BouncingBallState extends State<BouncingBall> {
                                   upR++;
                                 });
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: Icon(
-                                  FontAwesomeIcons.plus,
-                                  color: Colors.tealAccent,
-                                  size: 25,
-                                ),
-                              ),
+                              child: RatioButtonBouncingBall(
+                                  FontAwesomeIcons.plus),
                             ),
                             Text(
                               " Up-R ",
@@ -141,42 +128,18 @@ class _BouncingBallState extends State<BouncingBall> {
                                   upR--;
                                 });
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: Icon(
-                                  FontAwesomeIcons.minus,
-                                  color: Colors.tealAccent,
-                                  size: 25,
-                                ),
-                              ),
+                              child: RatioButtonBouncingBall(
+                                  FontAwesomeIcons.minus),
                             ),
-                            SizedBox(width: 5),
+                            SizedBox(width: 15),
                             GestureDetector(
                               onTap: () {
                                 setState(() {
                                   downR++;
                                 });
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: Icon(
-                                  FontAwesomeIcons.plus,
-                                  color: Colors.tealAccent,
-                                  size: 25,
-                                ),
-                              ),
+                              child: RatioButtonBouncingBall(
+                                  FontAwesomeIcons.plus),
                             ),
                             Text(
                               " Down-R ",
@@ -189,20 +152,8 @@ class _BouncingBallState extends State<BouncingBall> {
                                   downR--;
                                 });
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: Icon(
-                                  FontAwesomeIcons.minus,
-                                  color: Colors.tealAccent,
-                                  size: 25,
-                                ),
-                              ),
+                              child: RatioButtonBouncingBall(
+                                  FontAwesomeIcons.minus),
                             ),
                           ],
                         ),
@@ -254,7 +205,9 @@ class _BouncingBallState extends State<BouncingBall> {
                               });
                             }
                             if (downR == 0) {
-                              result = "unsolvable";
+                              setState(() {
+                                result = "unsolvable";
+                              });
                             } else {
                               setState(() {
                                 Navigator.push(
@@ -407,7 +360,14 @@ class _BouncingBallState extends State<BouncingBall> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              solver();
+                              double temp = upR / downR;
+                              if (downR == 0) {
+                                result = "unsolvable";
+                              } else if (temp >= 1 || temp <= -1) {
+                                result = "Divergence";
+                              } else {
+                                solver();
+                              }
                             });
                           },
                           child: Container(
@@ -434,6 +394,33 @@ class _BouncingBallState extends State<BouncingBall> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RatioButtonBouncingBall extends StatelessWidget {
+  const RatioButtonBouncingBall(
+    this.iconData, {
+    Key? key,
+  }) : super(key: key);
+  final IconData iconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.white,
+          width: 3,
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Icon(
+        iconData,
+        color: Colors.deepPurple,
+        size: 25,
       ),
     );
   }

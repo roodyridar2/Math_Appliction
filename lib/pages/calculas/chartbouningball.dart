@@ -59,10 +59,15 @@ class _TestPage extends State<ChartBouncingBall> {
 
     if (upR != downR) {
       bouncingballData.add(a);
+      int c = 0;
       while (true) {
         a = a * (upR / downR);
         bouncingballData.add(a.toStringAsFixed(2).toDouble());
+        c++;
         if (a < 1) {
+          break;
+        }
+        if (c == 20) {
           break;
         }
       }
